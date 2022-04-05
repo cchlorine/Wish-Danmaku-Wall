@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg fill="none" viewBox="0 0 640 539" xmlns="http://www.w3.org/2000/svg">
+  <path d="m323 522.57 216.71-125.12v-125.12l-216.71 125.12v125.12" clip-rule="evenodd" fill="#F48F18"
+    fill-rule="evenodd" />
+  <path d="m323 522.57 216.71-125.12v-125.12l-216.71 125.12v125.12z" stroke="#F48F18" stroke-linecap="round"
+    stroke-linejoin="round" stroke-miterlimit="10" stroke-width="1e-7" />
+  <path d="m323 522.57-216.71-125.12 108.35-62.557 108.36 62.557v125.12" clip-rule="evenodd" fill="#B23200"
+    fill-rule="evenodd" />
+  <path d="m323 522.57-216.71-125.12 108.35-62.557 108.36 62.557v125.12z" stroke="#B23200" stroke-linecap="round"
+    stroke-linejoin="round" stroke-miterlimit="10" stroke-width="1e-7" />
+  <path d="m323 22.103-216.71 125.12v125.12l216.71-125.12v-125.12z" clip-rule="evenodd" fill="#008DDD"
+    fill-rule="evenodd" />
+  <path d="m323 22.103-216.71 125.12v125.12l216.71-125.12v-125.12z" stroke="#008DDD" stroke-linecap="round"
+    stroke-linejoin="round" stroke-miterlimit="10" stroke-width="1e-7" />
+  <path d="m323 22.103 216.71 125.12-108.36 62.558-108.35-62.558v-125.12" clip-rule="evenodd" fill="#005BB2"
+    fill-rule="evenodd" />
+  <path d="m323 22.103 216.71 125.12-108.36 62.558-108.35-62.558v-125.12" stroke="#005BB2" stroke-linecap="round"
+    stroke-linejoin="round" stroke-miterlimit="10" stroke-width="1e-7" />
+  <path d="m323 147.22-216.71 125.12 216.71 125.12 216.71-125.12-216.71-125.12z" clip-rule="evenodd" fill="#FFDF46"
+    fill-rule="evenodd" />
+  <path d="m323 147.22-216.71 125.12 216.71 125.12 216.71-125.12-216.71-125.12z" stroke="#FFDF46" stroke-linecap="round"
+    stroke-linejoin="round" stroke-miterlimit="10" stroke-width="1e-7" />
+</svg>

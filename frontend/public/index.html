@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" id="viewport"
+    content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+  <meta name="screen-orientation" content="portrait">
+  <link rel="icon" href="/sends.svg">
+  <link rel="stylesheet" href="<%= BASE_URL %>fonts/full/liu.css">
+  <link rel="stylesheet" href="<%= BASE_URL %>fonts/small/liu.css">
+  <title>
+    待疫情后……
+  </title>
+  <meta itemprop="name" content="待疫情后……" />
+  <meta itemprop="image" content="<%= BASE_URL %>pictures/sunset.png" />
+  <meta name="description" itemprop="description" content="我想……" />
+
+  <!-- 使用CDN的CSS文件 -->
+  <% for (var i in htmlWebpackPlugin.options.cdn && htmlWebpackPlugin.options.cdn.css) { %>
+    <link href="<%= htmlWebpackPlugin.options.cdn.css[i] %>" rel="preload" as="style">
+    <link href="<%= htmlWebpackPlugin.options.cdn.css[i] %>" rel="stylesheet">
+    <% } %>
+      <!-- 使用CDN的JS文件 -->
+      <% for (var i in htmlWebpackPlugin.options.cdn && htmlWebpackPlugin.options.cdn.js) { %>
+        <link href="<%= htmlWebpackPlugin.options.cdn.js[i] %>" rel="preload" as="script">
+        <% } %>
+          <style>
+            @keyframes turn {
+              0% {
+                -webkit-transform: rotate(0deg);
+              }
+
+              100% {
+                -webkit-transform: rotate(360deg);
+              }
+            }
+
+            body,
+            input {
+              font-family: SixLineSmall;
+            }
+
+            #sendsLogo {
+              position: absolute;
+              z-index: 99;
+              display: flex;
+              justify-content: center;
+              width: 100%;
+              top: .5rem;
+            }
+
+            #loading {
+              position: fixed;
+              top: 0;
+              left: 0;
+              right: 0;
+              bottom: 0;
+              z-index: 9;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              transition: .3s ease;
+            }
+
+            #loading.hide {
+              z-index: -1;
+              opacity: 0;
+            }
+
+            #loading canvas {
+              max-width: 30rem;
+            }
+
+            #playController {
+              width: 1.8rem;
+              height: 1.8rem;
+              position: absolute;
+              top: 1rem;
+              right: 1rem;
+              z-index: 999;
+              background-size: cover;
+              background-image: url('/pictures/play.png');
+              background-position: center;
+              background-repeat: no-repeat;
+              animation: turn 6s linear infinite;
+              animation-play-state: paused;
+            }
+
+            #playController.playing {
+              animation-play-state: running;
+            }
+
+            #player {
+              display: none;
+            }
+          </style>
+</head>
+
+<body>
+  <noscript>
+    <strong>We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work properly without JavaScript enabled.
+        Please enable it to continue.</strong>
+  </noscript>
+  <div id="sendsLogo">
+    <svg fill="none" style="height: 2rem; width: 2rem;" viewBox="0 0 640 539" xmlns="http://www.w3.org/2000/svg">
+      <path d="m323 522.57 216.71-125.12v-125.12l-216.71 125.12v125.12" clip-rule="evenodd" fill="#F48F18"
+        fill-rule="evenodd" />
+      <path d="m323 522.57 216.71-125.12v-125.12l-216.71 125.12v125.12z" stroke="#F48F18" stroke-linecap="round"
+        stroke-linejoin="round" stroke-miterlimit="10" stroke-width="1e-7" />
+      <path d="m323 522.57-216.71-125.12 108.35-62.557 108.36 62.557v125.12" clip-rule="evenodd" fill="#B23200"
+        fill-rule="evenodd" />
+      <path d="m323 522.57-216.71-125.12 108.35-62.557 108.36 62.557v125.12z" stroke="#B23200" stroke-linecap="round"
+        stroke-linejoin="round" stroke-miterlimit="10" stroke-width="1e-7" />
+      <path d="m323 22.103-216.71 125.12v125.12l216.71-125.12v-125.12z" clip-rule="evenodd" fill="#008DDD"
+        fill-rule="evenodd" />
+      <path d="m323 22.103-216.71 125.12v125.12l216.71-125.12v-125.12z" stroke="#008DDD" stroke-linecap="round"
+        stroke-linejoin="round" stroke-miterlimit="10" stroke-width="1e-7" />
+      <path d="m323 22.103 216.71 125.12-108.36 62.558-108.35-62.558v-125.12" clip-rule="evenodd" fill="#005BB2"
+        fill-rule="evenodd" />
+      <path d="m323 22.103 216.71 125.12-108.36 62.558-108.35-62.558v-125.12" stroke="#005BB2" stroke-linecap="round"
+        stroke-linejoin="round" stroke-miterlimit="10" stroke-width="1e-7" />
+      <path d="m323 147.22-216.71 125.12 216.71 125.12 216.71-125.12-216.71-125.12z" clip-rule="evenodd" fill="#FFDF46"
+        fill-rule="evenodd" />
+      <path d="m323 147.22-216.71 125.12 216.71 125.12 216.71-125.12-216.71-125.12z" stroke="#FFDF46"
+        stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="1e-7" />
+    </svg>
+  </div>
+  <div id="playController" class="playing"></div>
+  <div id="app"></div>
+  <div id="loading"></div>
+  <!-- built files will be auto injected -->
+  <% for (var i in htmlWebpackPlugin.options.cdn && htmlWebpackPlugin.options.cdn.js) { %>
+    <script src="<%= htmlWebpackPlugin.options.cdn.js[i] %>"></script>
+    <% } %>
+      <!-- built files will be auto injected -->
+      <audio id="player" controls loop autoplay>
+        <source src="<%= BASE_URL %>audio/bgm.mp3" type="audio/mp3">
+      </audio>
+      <script src="<%= BASE_URL %>player.js"></script>
+
+      <script>
+        // Global boolean variable that holds the current orientation
+        var pageInPortraitMode;
+
+        if (!window.navigator.userAgent.includes('Safari')) {
+          // Listen for window resizes to detect orientation changes
+          window.addEventListener("resize", windowSizeChanged);
+          // Set the global orientation variable as soon as the page loads
+          addEventListener("load", function () {
+            pageInPortraitMode = window.innerHeight > window.innerWidth;
+            document.getElementById("viewport").setAttribute("content", "width=" + window.innerWidth + ", height=" + window.innerHeight + ", initial-scale=1.0, maximum-scale=1.0, user-scalable=0");
+          })
+        }
+
+        // Adjust viewport values only if orientation has changed (not on every window resize)
+        function windowSizeChanged() {
+          if (((pageInPortraitMode === true) && (window.innerHeight < window.innerWidth)) || ((pageInPortraitMode === false) && (window.innerHeight > window.innerWidth))) {
+            pageInPortraitMode = window.innerHeight > window.innerWidth;
+            document.getElementById("viewport").setAttribute("content", "width=" + window.innerWidth + ", height=" + window.innerHeight + ", initial-scale=1.0, maximum-scale=1.0, user-scalable=0");
+          }
+        }
+      </script>
+</body>
+</html>
