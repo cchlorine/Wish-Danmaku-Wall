@@ -1,0 +1,24 @@
+spring:
+  application:
+    name: pray
+  datasource:
+    username: wish
+    password: wishwish
+    url: jdbc:mysql://db:3306/pray?autoReconnect=true&useSSL=false
+    #    schema:
+    #    classpath: sql/sends-delisting.sql
+    driver-class-name: com.mysql.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: false
+# 应用服务 WEB 访问端口 本地8080 部署8443
+server:
+  port: 8888
+
+swagger:
+  enable : true
+
+app:
+  id: your wx appId
+  secret: your wx appSecret

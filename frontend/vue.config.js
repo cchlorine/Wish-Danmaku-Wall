@@ -1,4 +1,4 @@
-const CosPlugin = require('cos-webpack')
+// const CosPlugin = require('cos-webpack')
 const isProduction = process.env.NODE_ENV === 'production'
 const fileName = `wish/${Date.now()}/`
 const externals = {
@@ -17,17 +17,17 @@ const cdn = {
   }
 }
 
-const cosPlugin = new CosPlugin({
-  secretId: process.env.COS_SECRET_ID,
-  secretKey: process.env.COS_SECRET_KEY,
-  bucket: "wish-1309039959",
-  region: "ap-shanghai",
-  path: fileName
-});
+// const cosPlugin = new CosPlugin({
+//   secretId: process.env.COS_SECRET_ID,
+//   secretKey: process.env.COS_SECRET_KEY,
+//   bucket: "wish-1309039959",
+//   region: "ap-shanghai",
+//   path: fileName
+// });
 
 module.exports = {
   productionSourceMap: false,
-  publicPath: isProduction ? `https://wish-1309039959.file.myqcloud.com/${fileName}dist` : '',
+  // publicPath: isProduction ? `https://wish-1309039959.file.myqcloud.com/${fileName}dist` : '',
   chainWebpack: (config) => {
     config.plugin('html').tap(args => {
       if (isProduction) {
@@ -59,7 +59,7 @@ module.exports = {
   configureWebpack: (config) => {
     if (process.env.NODE_ENV === 'production') {
       config.externals = externals
-      config.plugins.push(cosPlugin)
+      // config.plugins.push(cosPlugin)
     }
   }
 
